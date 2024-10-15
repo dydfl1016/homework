@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Comprehension Homework</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Reading Comprehension Homework</h1>
+<p>Cindy has a kite. Her kite is big and yellow. She will give it to her brother. They will fly the kite together.</p>
+
+<form id="quizForm">
+    <p>1. Cindy가 가지고 있는 것은 무엇인가요?</p>
+    <input type="radio" name="q1" value="correct"> kite<br>
+    <input type="radio" name="q1" value="incorrect"> book<br>
+    <input type="radio" name="q1" value="incorrect"> toy<br>
+
+    <p>2. Cindy의 연은 어떤 색인가요?</p>
+    <input type="radio" name="q2" value="incorrect"> 빨간색<br>
+    <input type="radio" name="q2" value="correct"> 노란색<br>
+    <input type="radio" name="q2" value="incorrect"> 파란색<br>
+
+    <p>3. Cindy는 연을 누구에게 줄 건가요?</p>
+    <input type="radio" name="q3" value="correct"> her brother<br>
+    <input type="radio" name="q3" value="incorrect"> her sister<br>
+    <input type="radio" name="q3" value="incorrect"> her dad<br>
+
+    <p>4. Cindy와 그녀의 동생은 함께 무엇을 할 건가요?</p>
+    <input type="radio" name="q4" value="correct"> 연을 날린다<br>
+    <input type="radio" name="q4" value="incorrect"> 놀이공원에 간다<br>
+    <input type="radio" name="q4" value="incorrect"> 책을 읽는다<br>
+
+    <p>5. Cindy의 연은 크기가 어떠한가요?</p>
+    <input type="radio" name="q5" value="correct"> 크다<br>
+    <input type="radio" name="q5" value="incorrect"> 작다<br>
+    <input type="radio" name="q5" value="incorrect"> 중간 크기이다<br>
+
+    <br>
+    <input type="button" value="정답 제출" onclick="checkAnswers()">
+</form>
+
+<p id="result"></p>
+
+<script>
+function checkAnswers() {
+    var score = 0;
+    var totalQuestions = 5;
+    var form = document.getElementById('quizForm');
+    var resultText = "";
+
+    for (var i = 1; i <= totalQuestions; i++) {
+        var question = form['q' + i];
+        for (var j = 0; j < question.length; j++) {
+            if (question[j].checked) {
+                if (question[j].value === 'correct') {
+                    score++;
+                }
+            }
+        }
+    }
+
+    resultText = "총 점수: " + score + "/" + totalQuestions + ". ";
+    
+    if (score === totalQuestions) {
+        resultText += "잘했어요!";
+    } else {
+        resultText += "다음에 더 잘할 수 있어요!";
+    }
+    
+    document.getElementById('result').textContent = resultText;
+}
+</script>
+
+</body>
+</html>
